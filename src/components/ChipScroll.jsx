@@ -200,7 +200,9 @@ const ChipScroll = () => {
         className={`w-full h-screen block sticky top-0 transition-opacity duration-700 ${
           isLoading ? "opacity-0" : "opacity-100"
         }`}
-        style={{ touchAction: "none" }}
+        // touch-action: pan-y ensures the browser handles vertical scrolling naturally
+        // while we just observe the scroll position for the animation
+        style={{ touchAction: "pan-y" }}
       />
     </div>
   );
