@@ -5,13 +5,9 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: "Programs", path: "/programs" },
-    { name: "Schools", path: "/schools" },
-    { name: "Our Campus", path: "/campus" },
     { name: "About", path: "/about" },
-    { name: "Placements", path: "/placements" },
+    { name: "Our Campus", path: "/campus" },
     { name: "Admissions", path: "/admissions" },
-    { name: "Venture Studio", path: "/venture-studio" },
   ];
 
   return (
@@ -37,28 +33,22 @@ const Navbar = () => {
           <div className="hidden xl:flex items-center space-x-8">
             <div className="flex items-center space-x-6">
               {navLinks.map((link) => (
-                <Link
+                <span
                   key={link.name}
-                  to={link.path}
-                  className="text-[#666666] hover:text-[#CC0033] px-1 py-2 text-[15px] font-medium transition-colors duration-200"
+                  className="text-[#666666] hover:text-[#CC0033] px-1 py-2 text-[15px] font-medium transition-colors duration-200 cursor-default"
                 >
                   {link.name}
-                </Link>
+                </span>
               ))}
             </div>
 
             {/* Apply Now Button */}
-            <a
-              href="https://apply.rishihood.edu.in/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-2 px-4 py-2 bg-white border border-[#CC0033] rounded-lg hover:bg-[#CC0033] transition-all duration-300"
-            >
+            <button className="group flex items-center gap-2 px-4 py-2 bg-white border border-[#CC0033] rounded-lg hover:bg-[#CC0033] transition-all duration-300 cursor-pointer">
               <div className="w-2 h-2 rounded-full bg-[#CC0033] group-hover:bg-white transition-colors duration-80 animate-blink"></div>
               <span className="text-[#CC0033] group-hover:text-white font-semibold text-sm">
                 Apply Now
               </span>
-            </a>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -116,24 +106,17 @@ const Navbar = () => {
         >
           <div className="px-4 pt-4 pb-6 space-y-2">
             {navLinks.map((link) => (
-              <Link
+              <span
                 key={link.name}
-                to={link.path}
-                className="text-[#666666] hover:text-[#CC0033] hover:bg-gray-50 block px-3 py-3 rounded-md text-base font-medium"
-                onClick={() => setIsOpen(false)}
+                className="text-[#666666] hover:text-[#CC0033] hover:bg-gray-50 block px-3 py-3 rounded-md text-base font-medium cursor-default"
               >
                 {link.name}
-              </Link>
+              </span>
             ))}
-            <a
-              href="https://apply.rishihood.edu.in/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-3 py-3 text-[#CC0033] font-semibold text-base hover:bg-gray-50 rounded-md"
-            >
+            <button className="flex items-center gap-2 px-3 py-3 text-[#CC0033] font-semibold text-base hover:bg-gray-50 rounded-md cursor-pointer w-full text-left">
               <div className="w-2 h-2 rounded-full bg-[#CC0033] animate-blink"></div>
               Apply Now
-            </a>
+            </button>
           </div>
         </div>
       )}

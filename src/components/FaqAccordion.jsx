@@ -3,7 +3,7 @@ import { useState } from "react";
 const FaqItem = ({ question, answer, isOpen, onClick }) => {
   return (
     <div
-      className={`rounded-2xl mb-4 overflow-hidden border border-[rgb(222,222,222)] transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:bg-white ${
+      className={`rounded-2xl mb-4 overflow-hidden border border-[rgb(222,222,222)] transition-all duration-300 hover:scale-[1.01] hover:shadow-md ${
         isOpen ? "bg-[#ffedd2]" : "bg-[#FBF7EF]"
       }`}
     >
