@@ -55,20 +55,35 @@ const ImageCarousel = () => {
 
       {/* Hero Content */}
       <div className="absolute bottom-12 md:bottom-16 left-6 md:left-12 z-20 max-w-4xl pr-4">
-        <h1 className="text-3xl md:text-5xl lg:text-6xl font-black italic tracking-tighter text-white mb-2 drop-shadow-2xl whitespace-nowrap">
+        <motion.h1
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="text-3xl md:text-5xl lg:text-6xl font-black italic tracking-tighter text-white mb-2 drop-shadow-2xl whitespace-nowrap"
+        >
           DeepTech <span className="text-[#f3292a]">BootCamp</span>
-        </h1>
-        <p className="text-base md:text-xl font-bold text-white mb-6 tracking-wide drop-shadow-lg">
+        </motion.h1>
+        <motion.p
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          className="text-base md:text-xl font-bold text-white mb-6 tracking-wide drop-shadow-lg"
+        >
           Design. Innovate. Dominate.
-        </p>
-        <div className="flex flex-wrap gap-3">
+        </motion.p>
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+          className="flex flex-wrap gap-3"
+        >
           <button className="px-5 py-2 md:px-6 md:py-2.5 bg-[#D11333] text-white text-sm font-bold rounded-lg hover:bg-[#a30029] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 cursor-pointer">
             Apply now
           </button>
           <button className="px-5 py-2 md:px-6 md:py-2.5 bg-transparent border-2 border-white text-white text-sm font-bold rounded-lg hover:bg-white/10 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
             Download Brochure
           </button>
-        </div>
+        </motion.div>
       </div>
 
       {/* Navigation Dots (Optional, for better UX) */}

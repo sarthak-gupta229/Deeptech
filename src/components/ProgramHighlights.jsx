@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence, useScroll } from "framer-motion";
 
 const highlights = [
   {
@@ -42,20 +42,52 @@ const highlights = [
 
 const ProgramHighlights = () => {
   const [activeTab, setActiveTab] = useState("keynotes");
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  useEffect(() => {
+    return scrollYProgress.onChange((latest) => {
+      const index = Math.min(
+        Math.floor(latest * highlights.length),
+        highlights.length - 1,
+      );
+      setActiveTab(highlights[index].id);
+    });
+  }, [scrollYProgress]);
 
   return (
-    <div className="w-full bg-white py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
+    <div
+      ref={containerRef}
+      className="w-full bg-white py-28 px-4 sm:px-6 lg:px-8 relative lg:h-[300vh]"
+    >
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 lg:gap-16 items-start lg:sticky lg:top-32">
         {/* Left Side: Navigation Menu */}
-        <div className="w-full lg:w-[30%] flex flex-col shrink-0">
-          <h2 className="text-[#D11333] text-3xl md:text-[32px] font-bold mb-8 font-['Montserrat']">
+        <motion.div
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="w-full lg:w-[30%] flex flex-col shrink-0"
+        >
+          <h2 className="text-[#D11333] text-4xl md:text-[40px] font-bold mb-8 font-['Montserrat']">
             Program Highlights
           </h2>
 
           <div className="flex flex-col gap-3">
-            {highlights.map((item) => (
-              <button
+            {highlights.map((item, index) => (
+              <motion.button
                 key={item.id}
+                initial={{ x: -50, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.15,
+                  ease: "easeOut",
+                }}
+                viewport={{ once: true, amount: 0.3 }}
                 onClick={() => setActiveTab(item.id)}
                 className={`text-left px-6 py-5 rounded-lg text-[15px] font-medium transition-all duration-200 relative overflow-hidden group border ${
                   activeTab === item.id
@@ -69,14 +101,20 @@ const ProgramHighlights = () => {
                 <span className={activeTab === item.id ? "font-bold" : ""}>
                   {item.title}
                 </span>
-              </button>
+              </motion.button>
             ))}
             {/* Red Underline for the last item if active? No, screenshot shows red bar on left. */}
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Side: Content Area */}
-        <div className="w-full lg:w-[70%]">
+        <motion.div
+          initial={{ x: 100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="w-full lg:w-[70%]"
+        >
           <AnimatePresence mode="wait">
             {highlights.map(
               (item) =>
@@ -137,7 +175,7 @@ const ProgramHighlights = () => {
                 ),
             )}
           </AnimatePresence>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

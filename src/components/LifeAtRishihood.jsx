@@ -69,7 +69,13 @@ const LifeAtRishihood = () => {
     <div className="w-full bg-[#fcf7ef] py-24 px-4 sm:px-6 lg:px-8 overflow-hidden relative">
       <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center gap-6 lg:gap-8">
         {/* Left Content */}
-        <div className="w-full lg:w-[40%] flex flex-col space-y-6">
+        <motion.div
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="w-full lg:w-[40%] flex flex-col space-y-6"
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-[#D11333] leading-tight font-['Montserrat']">
             Experience life <br />
             at Rishihood University
@@ -120,10 +126,16 @@ const LifeAtRishihood = () => {
               </svg>
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Carousel */}
-        <div className="w-full lg:w-[60%] relative">
+        <motion.div
+          initial={{ x: 100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="w-full lg:w-[60%] relative"
+        >
           <div className="overflow-hidden w-full py-10 -my-10 px-4 -mx-4">
             <motion.div
               className="flex gap-6 w-full"
@@ -188,7 +200,7 @@ const LifeAtRishihood = () => {
               ))}
             </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Sidebar floating text (Download Brochure) - Absolute positioned on the right edge */}
