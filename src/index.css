@@ -10,5 +10,5 @@
 }
 
 .animate-blink {
-  animation: blink 0.8s ease-in-out infinite;
+  animation: blink 1.2s ease-in-out infinite;
 }
