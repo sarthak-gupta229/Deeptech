@@ -1,13 +1,8 @@
 import { motion } from "framer-motion";
-import ImageCarousel from "../components/ImageCarousel";
+
 const About = () => {
   return (
     <div className="w-full">
-      {/* Hero Carousel Section - Full Width */}
-      <div className="w-full">
-        <ImageCarousel />
-      </div>
-
       {/* About Section */}
       <div className="w-full bg-[#fcf7ef] py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-6">
