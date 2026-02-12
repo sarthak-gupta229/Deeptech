@@ -1,3 +1,4 @@
+import ImageCarousel from "../components/ImageCarousel";
 import About from "./About";
 import MentorsCarousel from "../components/MentorsCarousel";
 import LifeAtRishihood from "../components/LifeAtRishihood";
@@ -8,6 +9,7 @@ import BlogSection from "../components/BlogSection";
 const Home = () => {
   return (
     <div className="w-full bg-white">
+      <ImageCarousel />
       <About />
       <ProgramHighlights />
       <LifeAtRishihood />
